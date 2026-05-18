@@ -1,11 +1,11 @@
 {
   "name": "@useclypt/mcp-server",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Model Context Protocol server for Clypt — submit podcast URLs, receive clips and trailer.",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "clypt-mcp": "dist/index.js"
+    "mcp-server": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

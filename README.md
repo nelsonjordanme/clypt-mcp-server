@@ -50,7 +50,7 @@ Restart Claude Desktop. Then prompt: *"Use Clypt to clip this podcast: <RSS or a
 
 ### Cursor / Claude Code / other MCP hosts
 
-Same recipe — the binary is `clypt-mcp` (or `npx -y @useclypt/mcp-server`) and the only required env var is `CLYPT_API_KEY`.
+Same recipe — the binary is `mcp-server` (or run without global install via `npx -y @useclypt/mcp-server`) and the only required env var is `CLYPT_API_KEY`.
 
 ## Sandbox keys (free testing)
 

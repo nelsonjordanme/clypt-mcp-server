@@ -195,18 +195,13 @@ async function main(): Promise<void> {
   // host closes its end of the pipe.
 }
 
-// Only run main() when invoked as a CLI, not when imported by tests.
-// `import.meta.url === pathToFileURL(process.argv[1]).href` is the canonical
-// ESM check; using a simpler endsWith match keeps the dep surface tiny.
-const invokedAsCli =
-  typeof process !== "undefined" &&
-  Array.isArray(process.argv) &&
-  process.argv[1] !== undefined &&
-  import.meta.url.endsWith(process.argv[1].split("/").pop() ?? "");
-
-if (invokedAsCli) {
-  main().catch((err) => {
-    console.error("[clypt-mcp] fatal:", err);
-    process.exit(1);
-  });
-}
+// Always run main() — this module is only loaded as a CLI entry. The test
+// suite imports `src/client.ts` directly and never touches src/index.ts, so
+// there's no risk of double-execution. Earlier versions tried to detect "am
+// I being run as CLI?" by comparing import.meta.url to process.argv[1], but
+// that breaks under npm's bin-symlink resolution (the symlink and the
+// real path produce different URLs), leaving the server inert after install.
+main().catch((err) => {
+  console.error("[clypt-mcp] fatal:", err);
+  process.exit(1);
+});
