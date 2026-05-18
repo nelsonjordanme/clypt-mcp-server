@@ -1,6 +1,6 @@
 {
   "name": "@useclypt/mcp-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Model Context Protocol server for Clypt — submit podcast URLs, receive clips and trailer.",
   "type": "module",
   "main": "dist/index.js",
@@ -11,6 +11,7 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/index.js",
+    "test": "vitest run",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -25,18 +26,20 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/useclypt/mcp-server.git"
+    "url": "git+https://github.com/nelsonjordanme/clypt-mcp-server.git"
   },
   "homepage": "https://useclypt.com/developers",
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "vitest": "^2.0.0"
   },
   "files": [
     "dist/**/*",
