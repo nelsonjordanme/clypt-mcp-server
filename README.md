@@ -14,6 +14,14 @@ Pure shim over the public REST API at `https://useclypt.com/api/v1` — three to
 
 The flow is asynchronous: `submit_job` returns immediately with a queued id; the agent polls `get_job` until terminal. Once a webhook is registered against your org, `job.completed` and `job.failed` events fire on every terminal transition — register via the public API at `POST /v1/webhooks` (no MCP tool for this yet; coming in a later minor).
 
+## Try it
+
+With the server configured in Claude Desktop, ask:
+
+> *Use Clypt to clip this podcast and tell me when it's done: https://feeds.simplecast.com/abc123*
+
+Claude will call `submit_job`, get back a job id, poll `get_job` until terminal, and surface the clips + trailer + transcript inline. Wall-clock: ~2-5 min for audio/RSS, ~10-12 min for video + trailer.
+
 ## Installation
 
 ```bash
@@ -63,7 +71,7 @@ Fixture mapping:
 - `source.type='youtube_url'` → `youtube_ingestion_failed` error fixture
 - Malformed URL → `invalid_source_url` validation error at submit
 
-Get a sandbox key from your developer dashboard once it ships (until then, ask Nelson).
+Get a sandbox key in seconds at [useclypt.com/developers/signup](https://useclypt.com/developers/signup) — no credit card, no waiting list. Sandbox keys (prefix `clk_test_`) return deterministic fixtures so you can wire up your agent for free before swapping in a `clk_live_` key.
 
 ## Environment variables
 
@@ -88,6 +96,12 @@ npm run build
 CLYPT_API_KEY=clk_test_xxx \
   npx @modelcontextprotocol/inspector --cli node dist/index.js --method tools/list
 ```
+
+## Learn more
+
+- API reference: [useclypt.com/developers/docs](https://useclypt.com/developers/docs)
+- Get a key: [useclypt.com/developers/signup](https://useclypt.com/developers/signup)
+- About Clypt: [useclypt.com](https://useclypt.com)
 
 ## License
 
