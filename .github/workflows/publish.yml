@@ -24,4 +24,8 @@ jobs:
 
       - run: npm run build
 
+      - run: npm install -g npm@latest
+
+      - run: npm --version
+
       - run: npm publish --access public --provenance

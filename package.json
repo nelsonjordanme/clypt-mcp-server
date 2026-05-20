@@ -1,6 +1,6 @@
 {
   "name": "@useclypt/mcp-server",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "mcpName": "io.github.nelsonjordanme/clypt",
   "description": "Model Context Protocol server for Clypt — submit podcast URLs, receive clips and trailer.",
   "type": "module",
